@@ -1,0 +1,28 @@
+{
+  "name": "kolaente/snippet",
+  "description": "Adds a snippet modifier to statamic.",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "kolaente",
+      "email": "k@knt.li"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Kolaente\\Snippet\\": "src"
+    }
+  },
+  "extra": {
+    "statamic": {
+      "name": "Snippet",
+      "description": "Adds a 'snippet' modifier to statamic for creating snippets for strings."
+    },
+    "laravel": {
+      "providers": [
+        "Kolaente\\Snippet\\ServiceProvider"
+      ]
+    }
+  },
+  "require": {}
+}
