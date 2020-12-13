@@ -2,6 +2,7 @@
 
 namespace Kolaente\Snippet\Modifiers;
 
+use Statamic\Fields\Value;
 use Statamic\Modifiers\Modifier;
 
 class TextSnippet extends Modifier
@@ -23,6 +24,24 @@ class TextSnippet extends Modifier
     {
         $lengthMin = $params[0] ?? 200;
         $lengthMax = $params[1] ?? 250;
+
+        if (is_array($value)) { // Dealing with bard text
+            $text = '';
+            foreach ($value as $v) {
+                if (isset($v['text'])) {
+                    /** @var Value $t */
+                    $t = $v['text'];
+                    $spaced = str_replace('<p>', ' ', $t->value()); // Adds extra space between cut words
+                    $text .= strip_tags($spaced) . ' ';
+                }
+
+                // No need to create a bunch of text if we're scraping most of it anyways
+                if (strlen($text) > $lengthMax) {
+                    break;
+                }
+            }
+            $value = $text;
+        }
 
         $firstSentenceEnd = strpos($value, '.', $lengthMin);
         if ($firstSentenceEnd <= $lengthMax) {
