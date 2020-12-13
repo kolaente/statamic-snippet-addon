@@ -1,5 +1,5 @@
 {
-  "name": "kolaente/snippet",
+  "name": "kolaente/statamic-snippet",
   "description": "Adds a snippet modifier to statamic.",
   "license": "MIT",
   "authors": [
