@@ -43,6 +43,8 @@ class TextSnippet extends Modifier
             $value = $text;
         }
 
+        $lengthMin = strlen($value) < $lengthMin ? strlen($value) : $lengthMin;
+
         $firstSentenceEnd = strpos($value, '.', $lengthMin);
         if ($firstSentenceEnd <= $lengthMax) {
             return substr($value, 0, $firstSentenceEnd + 1);
