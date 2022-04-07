@@ -31,7 +31,7 @@ class TextSnippet extends Modifier
                 if (isset($v['text'])) {
                     /** @var Value $t */
                     $t = $v['text'];
-                    $spaced = str_replace('<p>', ' ', $t->value()); // Adds extra space between cut words
+                    $spaced = str_replace('<p>', ' ', $t); // Adds extra space between cut words
                     $text .= strip_tags($spaced) . ' ';
                 }
 
